@@ -1,11 +1,13 @@
 import selenium
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+
 #2 - classes
-class test_create():
+class Teste_create():
 # 2.1 Atributos
     url =   "https:www.giulianaflores.com.br"
 
@@ -15,7 +17,7 @@ class test_create():
         self.driver.implicitly_wait(5)                       #define o tempo de espera padrão dos elementos em segundos
 
     def teardown_method(self):
-        self.driver.quit() 
+        self.driver.quit()                              #fecha o navegador
 
     def teste_create(self):
         self.driver.get(self.url)
@@ -27,5 +29,7 @@ class test_create():
         self.driver.find_element(By.ID, "ContentSite_txtEmail").send_keys("renan.jose.assis@vbrasildigital.net")
         self.driver.find_element(By.ID, "ContentSite_txtPasswordNew").send_keys("Teste123")
         self.driver.find_element(By.ID, "ContentSite_CustomerAddress_txtZip").send_keys("18022-200")
-        self.driver.find_element(By.ID, "recaptcha-anchor").click()
+        self.driver.find_element(By.ID, "ContentSite_CustomerAddress_txtAddressNumber").send_keys("599")
+        self.driver.find_element(By.ID, "ContentSite_CustomerAddress_txtPhoneCelularNum").send_keys("(15) 99795-3306")
+        time.sleep(10)
         self.driver.find_element(By.ID, "ContentSite_btnCreateCustomer").click()
