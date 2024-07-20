@@ -6,20 +6,24 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-#2 - classes
+
 class Test_buy_product():
-# 2.1 Atributos
+
     url =   "https:www.giulianaflores.com.br"
 
-# 2.2 funções e métodos
-    def setup_method(self):# os dois pontos dizem onde está a função/ dentro do paranteses recebe e passa valores
-        self.driver = webdriver.Chrome() #tem que importar         #instanciar o webdriver com o chrome
-        self.driver.implicitly_wait(5)                       #define o tempo de espera padrão dos elementos em segundos
+
+    def setup_method(self):
+        self.driver = webdriver.Chrome() 
+        self.driver.implicitly_wait(5)                       
 
     def teardown_method(self):
-        self.driver.quit()                              #fecha o navegador
+        self.driver.quit()                              
 
-    def teste_create(self):
+    def teste_buy_product(self):
         self.driver.get(self.url)
-        self.driver.find_element(By.CSS_SELECTOR, ".swiper-wrapper .swiper-slide:nth-child(1) .img_banner").click()
-        self.driver.find_element(By.ID, "32413").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".swiper-wrapper .swiper-slide:nth-child(2) .img_banner").click()
+        self.driver.find_element(By.CLASS_NAME, "close-button").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".ulPrincipal .item:nth-child(3) .product-item").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".input_cep .campos-cep .box-field-mobile input:nth-of-type(1)").send_keys("18022")
+        self.driver.find_element(By.CSS_SELECTOR, ".input_cep .campos-cep .box-field-mobile input:nth-of-type(2)").send_keys("200")
+        self.driver.find_element(By.ID, "ContentSite_lbtBuy").click
